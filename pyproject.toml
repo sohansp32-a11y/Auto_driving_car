@@ -7,7 +7,15 @@ authors = [
     { name = "Sohan SP", email = "sohansp32@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "fastapi>=0.141.1",
+    "numpy>=2.4.6",
+    "pygame>=2.6.1",
+    "requests>=2.34.2",
+    "torch>=2.14.0",
+    "torchinfo>=1.8.0",
+    "uvicorn>=0.52.4",
+]
 
 [project.scripts]
 self-driving-car = "self_driving_car:main"
@@ -15,3 +23,16 @@ self-driving-car = "self_driving_car:main"
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.workspace]
+members = [
+    ".",
+]
+
+[tool.uv.sources]
+self-driving-car = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "self-driving-car",
+]
